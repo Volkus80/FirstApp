@@ -1,5 +1,5 @@
-import { Text } from "react-native"
+import { AuthInviteView } from "../Components/AuthInviteView";
 
 export const Profile = () => {
-    return <Text>Профиль</Text>
+    return <AuthInviteView />
 }
