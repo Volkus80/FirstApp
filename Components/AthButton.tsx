@@ -1,30 +1,45 @@
-import { TouchableOpacity, Text, StyleSheet } from 'react-native';
+import { TouchableOpacity, Text, StyleSheet, ViewStyle, StyleProp } from 'react-native';
 
 
 export type AuthButtonProps = {
     title: string,
-    onPress?: () => void
+    onPress?: () => void,
+    style?: StyleProp<ViewStyle>,
 }
 
-export const AuthButton = ({ title, onPress = () => { } }: AuthButtonProps) => {
+export const AuthButton = ({ title, onPress = () => { }, style = {} }: AuthButtonProps) => {
     return (
-        <TouchableOpacity style={styles.button} onPress={onPress}>
-            <Text style={styles.buttonText}>{title} </Text>
+        <TouchableOpacity style={[styles.buttonBlock, style]} onPress={onPress}>
+            <Text style={styles.buttonText}> {title} </Text>
         </TouchableOpacity>
     )
 }
 
 const styles = StyleSheet.create({
-    button: {
-        alignSelf: 'stretch',
+    buttonBlock: {
+        // display: 'flex',
+        // flexDirection: 'row',
+        // alignSelf: 'stretch',
         backgroundColor: 'blue',
         paddingHorizontal: 15,
         paddingVertical: 10,
         borderRadius: 10,
-        flex: 1
+        flexGrow: 1,
+        flexBasis: 1,
+        // flexWrap: 'nowrap',
+        flexShrink: 1,
+        // alignContent: 'center',
+        alignItems: 'center',
+        justifyContent: 'center',
+        // flex: 1
+
     },
     buttonText: {
-        textAlign: 'center',
+        // textAlign: 'center',
+        // alignSelf: 'center',
+        // alignContent: 'center',
+        // justifyContent: 'center',
+        fontSize: 16,
         color: '#fff'
     }
 });
