@@ -1,7 +1,7 @@
 import { TouchableOpacity, Text, StyleSheet } from 'react-native';
-import { AuthButtonProps } from './AthButton';
+import { ButtonProps } from '../types/ButtonProps';
 
-type ServiceButtonProps = AuthButtonProps & {
+type ServiceButtonProps = ButtonProps & {
     children: React.ReactNode
 }
 
@@ -19,15 +19,19 @@ const styles = StyleSheet.create({
         display: 'flex',
         flexDirection: 'column',
         flex: 1,
-        alignItems: 'center'
-
+        alignItems: 'center',
+        borderStyle: 'solid',
+        borderRadius: 5,
+        borderColor: 'tomato',
+        borderWidth: 2,
+        paddingVertical: 5
     },
     icon: {
         width: 30,
         height: 30,
     },
     text: {
-        color: 'red',
+        color: 'tomato',
         fontSize: 16
     }
 })

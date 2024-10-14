@@ -1,11 +1,15 @@
-import { View, Text, StyleSheet, Linking, Modal } from "react-native"
+import { View, Text, StyleSheet, Linking, Modal, Pressable } from "react-native"
 import { Image as ExpoImage } from "expo-image";
 import { AuthButton } from "./AthButton";
 import { ServiceButton } from "./ServiceButton";
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
-import MaterialIcons from '@expo/vector-icons/MaterialIcons';
+import { IconedButton } from "./IconedButton";
+import SimpleLineIcons from '@expo/vector-icons/SimpleLineIcons';
+import { useState } from "react";
+import { StackProps } from "../types/routTypes";
 
-export const AuthInviteView = () => {
+export const AuthInviteView = ({ navigation }: StackProps) => {
+    const [visible, setVisible] = useState(false);
     return (
         <View style={styles.container}>
             <ExpoImage
@@ -22,25 +26,36 @@ export const AuthInviteView = () => {
 
             <View style={styles.authButtonsBlock}>
                 <ServiceButton title="Позвонить" onPress={() => Linking.openURL('tel:+79112384466')}>
-                    <MaterialCommunityIcons name="phone" size={24} color="black" />
+                    <MaterialCommunityIcons name="phone" size={24} color="tomato" />
                 </ServiceButton>
                 <ServiceButton title="Написать" onPress={() => Linking.openURL('mailto:kaz80@yandex.ru')}>
-                    <MaterialIcons name="email" size={24} color="black" />
+                    <MaterialCommunityIcons name="email" size={24} color="tomato" />
                 </ServiceButton>
                 <ServiceButton title="Спросить">
-                    <MaterialCommunityIcons name="message-reply-text" size={24} color="black" />
+                    <MaterialCommunityIcons name="message-reply-text" size={24} color="tomato" />
                 </ServiceButton>
             </View>
             <View style={styles.authButtonsBlock}>
-                <AuthButton title="О сервисе">
-
-                </AuthButton>
+                <IconedButton title="О сервисе" onPress={() => navigation.navigate('')}>
+                    {
+                        [
+                            <MaterialCommunityIcons name="information-outline" size={30} color="white" key='0' />,
+                            <SimpleLineIcons name="arrow-down" size={24} color="white" key='1' />,
+                        ]
+                    }
+                </IconedButton>
             </View>
-            <Modal
-                visible={false}
-                statusBarTranslucent={true}
+            {/* <Modal
+                visible={visible}
+                //statusBarTranslucent={true}
                 transparent={true}
-                style={styles.modalWin}></Modal>
+                animationType="slide"
+            // style={styles.modalWin}
+            >
+                <Pressable style={styles.modalWinBody} onPress={() => setVisible(false)}>
+
+                </Pressable>
+            </Modal> */}
         </View>
     );
 }
@@ -72,8 +87,13 @@ const styles = StyleSheet.create({
 
     },
     modalWin: {
-        maxHeight: 200,
+        // maxHeight: 200,
+        // backgroundColor: 'silver',
+        // opacity: .2
+    },
+    modalWinBody: {
+        flex: 1,
         backgroundColor: 'silver',
-        opacity: .2
+        opacity: .4
     }
 })

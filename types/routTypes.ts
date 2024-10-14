@@ -1,6 +1,6 @@
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 
-type RouteType = {
+type MainRouteType = {
     Main: undefined,
     Card: undefined,
     Map: undefined,
@@ -8,6 +8,18 @@ type RouteType = {
     Profile: undefined,
 };
 
-type StackProps = NativeStackScreenProps<RouteType>;
 
-export {RouteType, StackProps};
+type StackProps = NativeStackScreenProps<MainRouteType>;
+
+type ModalRouteType = {
+    ModalPage: undefined,
+    ModalMenu: undefined,
+    InfoPage: {
+        name: string,
+        text: string
+    }
+}
+
+type ModalProps = NativeStackScreenProps<MainRouteType>;
+
+export { MainRouteType, StackProps, ModalRouteType, ModalProps };

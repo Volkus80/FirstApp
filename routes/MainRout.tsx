@@ -1,13 +1,14 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { BottomTabNavigationOptions, createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { RouteType } from "../types/routTypes";
+import { MainRouteType } from "../types/routTypes";
 import { NavigationContainer } from "@react-navigation/native";
 import { Main, Card, Profile, Promo, Map } from "../views";
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
+import { ModalRoute } from "./ModalRoute";
 
 // const Stack = createNativeStackNavigator<RouteType>();
-const Tab = createBottomTabNavigator<RouteType>();
-const tabOptions: BottomTabNavigationOptions = {
+const Tab = createBottomTabNavigator<MainRouteType>();
+export const tabOptions: BottomTabNavigationOptions = {
     title: "Главная",
     headerStyle: {
         backgroundColor: '#fff',
@@ -76,7 +77,7 @@ export const Rout = () => {
                 options={{ ...tabOptions, title: "Акции" }} />
             <Tab.Screen
                 name="Profile"
-                component={Profile}
+                component={ModalRoute}
                 options={{ ...tabOptions, title: "Профиль" }} />
         </Tab.Navigator>
     </NavigationContainer>

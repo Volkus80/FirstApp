@@ -1,11 +1,8 @@
 import { TouchableOpacity, Text, StyleSheet, ViewStyle, StyleProp } from 'react-native';
+import { ButtonProps as AuthButtonProps } from '../types/ButtonProps';
 
 
-export type AuthButtonProps = {
-    title: string,
-    onPress?: () => void,
-    style?: StyleProp<ViewStyle>,
-}
+
 
 export const AuthButton = ({ title, onPress = () => { }, style = {} }: AuthButtonProps) => {
     return (
