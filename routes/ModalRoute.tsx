@@ -12,6 +12,9 @@ export const ModalRoute = () => {
         <Modal.Screen
             name='ModalPage'
             component={Profile}
+            options={{
+                headerShown: false
+            }}
         />
         <Modal.Screen
             name='ModalMenu'

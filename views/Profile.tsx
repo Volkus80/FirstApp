@@ -1,5 +1,5 @@
 import { AuthInviteView } from "../Components/AuthInviteView";
 
-export const Profile = () => {
+export const Profile = ({ navigation }: ) => {
     return <AuthInviteView />
 }
