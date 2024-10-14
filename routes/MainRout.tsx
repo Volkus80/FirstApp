@@ -78,7 +78,9 @@ export const Rout = () => {
             <Tab.Screen
                 name="Profile"
                 component={ModalRoute}
-                options={{ ...tabOptions, title: "Профиль" }} />
+                options={{ headerTransparent: true, title: ''}} 
+                // options={{ ...tabOptions, title: "Профиль" }} 
+                />
         </Tab.Navigator>
     </NavigationContainer>
 }

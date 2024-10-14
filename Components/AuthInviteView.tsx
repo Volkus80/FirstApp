@@ -7,9 +7,17 @@ import { IconedButton } from "./IconedButton";
 import SimpleLineIcons from '@expo/vector-icons/SimpleLineIcons';
 import { useState } from "react";
 import { StackProps } from "../types/routTypes";
+import { useNavigation } from "@react-navigation/native";
+import { InfoButtonsBlock } from "./InfoButtonsBlock";
+import { ModalRoute } from "../routes/ModalRoute";
 
-export const AuthInviteView = ({ navigation }: StackProps) => {
+type AuthInviteViewProps = {
+    openModal: () => void
+}
+
+export const AuthInviteView = ({openModal}:AuthInviteViewProps) => {
     const [visible, setVisible] = useState(false);
+    // const navigation = useNavigation<StackProps>();
     return (
         <View style={styles.container}>
             <ExpoImage
@@ -36,7 +44,7 @@ export const AuthInviteView = ({ navigation }: StackProps) => {
                 </ServiceButton>
             </View>
             <View style={styles.authButtonsBlock}>
-                <IconedButton title="О сервисе" onPress={() => navigation.navigate('')}>
+                <IconedButton title="О сервисе" onPress={openModal}>
                     {
                         [
                             <MaterialCommunityIcons name="information-outline" size={30} color="white" key='0' />,
@@ -52,9 +60,7 @@ export const AuthInviteView = ({ navigation }: StackProps) => {
                 animationType="slide"
             // style={styles.modalWin}
             >
-                <Pressable style={styles.modalWinBody} onPress={() => setVisible(false)}>
-
-                </Pressable>
+                <ModalRoute />
             </Modal> */}
         </View>
     );
