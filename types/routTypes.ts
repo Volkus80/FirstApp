@@ -6,12 +6,12 @@ type MainRouteType = {
     Map: undefined,
     Promo: undefined,
     Profile: undefined,
-    ModalMenu: undefined,
-    InfoPage: {
-        name: string,
-        text: string
-    }
-    
+    // ModalMenu: undefined,
+    // InfoPage: {
+    //     name: string,
+    //     text: string
+    // }
+
 };
 
 
@@ -19,7 +19,9 @@ type StackProps = NativeStackScreenProps<MainRouteType>;
 
 type ModalRouteType = {
     ModalPage: undefined,
-    ModalMenu: undefined,
+    ModalMenu: {
+        onPress: () => void
+    },
     InfoPage: {
         name: string,
         text: string

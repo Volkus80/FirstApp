@@ -15,7 +15,7 @@ type AuthInviteViewProps = {
     openModal: () => void
 }
 
-export const AuthInviteView = ({openModal}:AuthInviteViewProps) => {
+export const AuthInviteView = ({ openModal }: AuthInviteViewProps) => {
     const [visible, setVisible] = useState(false);
     // const navigation = useNavigation<StackProps>();
     return (
@@ -44,7 +44,7 @@ export const AuthInviteView = ({openModal}:AuthInviteViewProps) => {
                 </ServiceButton>
             </View>
             <View style={styles.authButtonsBlock}>
-                <IconedButton title="О сервисе" onPress={openModal}>
+                <IconedButton title="О сервисе" onPress={() => setVisible(true)}>
                     {
                         [
                             <MaterialCommunityIcons name="information-outline" size={30} color="white" key='0' />,
@@ -53,15 +53,15 @@ export const AuthInviteView = ({openModal}:AuthInviteViewProps) => {
                     }
                 </IconedButton>
             </View>
-            {/* <Modal
+            <Modal
                 visible={visible}
                 //statusBarTranslucent={true}
                 transparent={true}
                 animationType="slide"
             // style={styles.modalWin}
             >
-                <ModalRoute />
-            </Modal> */}
+                <InfoButtonsBlock closeModal={() => setVisible(false)} />
+            </Modal>
         </View>
     );
 }

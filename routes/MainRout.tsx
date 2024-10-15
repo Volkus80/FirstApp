@@ -77,10 +77,12 @@ export const Rout = () => {
                 options={{ ...tabOptions, title: "Акции" }} />
             <Tab.Screen
                 name="Profile"
-                component={ModalRoute}
-                options={{ headerTransparent: true, title: ''}} 
-                // options={{ ...tabOptions, title: "Профиль" }} 
-                />
+                component={Profile}
+                // component={ModalRoute}
+                // options={{ headerShown: false }}
+                // options={{ headerTransparent: true, title: ''}} 
+                options={{ ...tabOptions, title: "Профиль" }}
+            />
         </Tab.Navigator>
     </NavigationContainer>
 }
