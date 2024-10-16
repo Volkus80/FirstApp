@@ -1,29 +1,23 @@
-import { View, Text, StyleSheet, Linking, Modal, Pressable } from "react-native"
+import { View, Text, StyleSheet, Linking } from "react-native"
 import { Image as ExpoImage } from "expo-image";
 import { AuthButton } from "./AthButton";
 import { ServiceButton } from "./ServiceButton";
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import { IconedButton } from "./IconedButton";
 import SimpleLineIcons from '@expo/vector-icons/SimpleLineIcons';
-import { useState } from "react";
-import { StackProps } from "../types/routTypes";
-import { useNavigation } from "@react-navigation/native";
-import { InfoButtonsBlock } from "./InfoButtonsBlock";
-import { ModalRoute } from "../routes/ModalRoute";
+import { InfoButtonsModal } from "./InfoButtonsModal";
+import { useModal } from "../hooks/useModal";
 
-type AuthInviteViewProps = {
-    openModal: () => void
-}
 
-export const AuthInviteView = ({ openModal }: AuthInviteViewProps) => {
-    const [visible, setVisible] = useState(false);
-    // const navigation = useNavigation<StackProps>();
+export const AuthInviteView = () => {
+    const { visible, showModal, closeModal } = useModal();
     return (
         <View style={styles.container}>
             <ExpoImage
                 style={styles.image}
                 source="https://upload.wikimedia.org/wikipedia/commons/7/79/Vanamo_Logo.svg"
                 contentFit="cover"
+                cachePolicy={'memory'}
             />
             <Text style={styles.text}>Войдите или зарегестрируйтесь для получения бонусов и персональных предложений</Text>
 
@@ -44,7 +38,7 @@ export const AuthInviteView = ({ openModal }: AuthInviteViewProps) => {
                 </ServiceButton>
             </View>
             <View style={styles.authButtonsBlock}>
-                <IconedButton title="О сервисе" onPress={() => setVisible(true)}>
+                <IconedButton title="О сервисе" onPress={showModal}>
                     {
                         [
                             <MaterialCommunityIcons name="information-outline" size={30} color="white" key='0' />,
@@ -53,15 +47,7 @@ export const AuthInviteView = ({ openModal }: AuthInviteViewProps) => {
                     }
                 </IconedButton>
             </View>
-            <Modal
-                visible={visible}
-                //statusBarTranslucent={true}
-                transparent={true}
-                animationType="slide"
-            // style={styles.modalWin}
-            >
-                <InfoButtonsBlock closeModal={() => setVisible(false)} />
-            </Modal>
+            <InfoButtonsModal visible={visible} closeModal={closeModal} />
         </View>
     );
 }
@@ -91,11 +77,6 @@ const styles = StyleSheet.create({
         width: '100%',
         gap: 10
 
-    },
-    modalWin: {
-        // maxHeight: 200,
-        // backgroundColor: 'silver',
-        // opacity: .2
     },
     modalWinBody: {
         flex: 1,

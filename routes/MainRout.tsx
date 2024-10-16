@@ -5,6 +5,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { Main, Card, Profile, Promo, Map } from "../views";
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { ModalRoute } from "./ModalRoute";
+import { useAuthContext } from "../hooks/useAuthContext";
 
 // const Stack = createNativeStackNavigator<RouteType>();
 const Tab = createBottomTabNavigator<MainRouteType>();
@@ -29,6 +30,7 @@ export const tabOptions: BottomTabNavigationOptions = {
 
 
 export const Rout = () => {
+    const { user } = useAuthContext();
     return <NavigationContainer>
         <Tab.Navigator
             screenOptions={({ route }) => ({
@@ -58,8 +60,24 @@ export const Rout = () => {
 
             })}
 
-        >
+        > (user ?
+            (<Tab.Screen
+                name="Main"
+                component={Main}
+                options={{ ...tabOptions, title: "Главная" }} />
             <Tab.Screen
+                name="Map"
+                component={Map}
+                options={{ ...tabOptions, title: "Магазины" }} />
+            <Tab.Screen
+                name="Profile"
+                component={Profile}
+                // component={ModalRoute}
+                // options={{ headerShown: false }}
+                // options={{ headerTransparent: true, title: ''}} 
+                options={{ ...tabOptions, title: "Профиль" }}
+            />)
+            : (<Tab.Screen
                 name="Main"
                 component={Main}
                 options={{ ...tabOptions, title: "Главная" }} />
@@ -82,7 +100,7 @@ export const Rout = () => {
                 // options={{ headerShown: false }}
                 // options={{ headerTransparent: true, title: ''}} 
                 options={{ ...tabOptions, title: "Профиль" }}
-            />
+            />))
         </Tab.Navigator>
     </NavigationContainer>
 }
