@@ -1,5 +1,10 @@
-import { IUser } from "./IUser"
+import { Dispatch, SetStateAction } from "react";
+import { TypeUserState } from "./TypeUserState";
 
-export type TypeAuth = {
-    user: IUser | null
+
+type TypeAuth = {
+    user: TypeUserState,
+    setUser: Dispatch<SetStateAction<TypeUserState>>
 };
+
+export { TypeAuth }

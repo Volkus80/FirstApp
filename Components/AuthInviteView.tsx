@@ -1,15 +1,16 @@
 import { View, Text, StyleSheet, Linking } from "react-native"
 import { Image as ExpoImage } from "expo-image";
-import { AuthButton } from "./AthButton";
+import { ButtonComponent } from "./ButtonComponent";
 import { ServiceButton } from "./ServiceButton";
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import { IconedButton } from "./IconedButton";
 import SimpleLineIcons from '@expo/vector-icons/SimpleLineIcons';
 import { InfoButtonsModal } from "./InfoButtonsModal";
 import { useModal } from "../hooks/useModal";
+import { StackProps } from "../types/routTypes";
 
 
-export const AuthInviteView = () => {
+export const AuthInviteView = ({ navigation, route }: StackProps) => {
     const { visible, showModal, closeModal } = useModal();
     return (
         <View style={styles.container}>
@@ -22,8 +23,8 @@ export const AuthInviteView = () => {
             <Text style={styles.text}>Войдите или зарегестрируйтесь для получения бонусов и персональных предложений</Text>
 
             <View style={styles.authButtonsBlock}>
-                <AuthButton title="Вход" />
-                <AuthButton title="Регистрация" />
+                <ButtonComponent title="Вход" onPress={() => navigation.navigate('AuthView')} />
+                <ButtonComponent title="Регистрация" onPress={() => navigation.navigate('RegisterView')} />
             </View>
 
             <View style={styles.authButtonsBlock}>

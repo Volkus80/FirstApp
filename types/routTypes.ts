@@ -6,6 +6,10 @@ type MainRouteType = {
     Map: undefined,
     Promo: undefined,
     Profile: undefined,
+    AuthView: undefined,
+    RegisterView: undefined,
+    UserView: undefined,
+    UserDataView: undefined
     // ModalMenu: undefined,
     // InfoPage: {
     //     name: string,

@@ -1,15 +1,17 @@
 import { View, Text, Button, StatusBar, StyleSheet } from "react-native";
 import { StackProps } from "../types/routTypes";
 import { Header } from "../Components/Header";
+import { useAuthContext } from "../hooks/useAuthContext";
 
 
 
 export const Main = ({ navigation }: StackProps) => {
+    const { user } = useAuthContext();
     return <View style={styles.container}>
         {/* <Header title="Главная" /> */}
-        <Button title="Карта" onPress={() => { navigation.navigate('Card') }} />
+        {(user && <Button title="Карта" onPress={() => { navigation.navigate('Card') }} />)}
         <Button title="Магазины" onPress={() => { navigation.navigate('Map') }} />
-        <Button title="Акции" onPress={() => { navigation.navigate('Promo') }} />
+        {(user && <Button title="Акции" onPress={() => { navigation.navigate('Promo') }} />)}
         <Button title="Профиль" onPress={() => { navigation.navigate('Profile') }} />
         <StatusBar barStyle='default' />
     </View>

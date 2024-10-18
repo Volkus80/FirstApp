@@ -6,6 +6,8 @@ import { Main, Card, Profile, Promo, Map } from "../views";
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { ModalRoute } from "./ModalRoute";
 import { useAuthContext } from "../hooks/useAuthContext";
+import { Text, View } from "react-native";
+import { UserRoute } from "./UserRoute";
 
 // const Stack = createNativeStackNavigator<RouteType>();
 const Tab = createBottomTabNavigator<MainRouteType>();
@@ -31,6 +33,47 @@ export const tabOptions: BottomTabNavigationOptions = {
 
 export const Rout = () => {
     const { user } = useAuthContext();
+
+    const autorizedRout = <>
+        <Tab.Screen
+            name="Main"
+            component={Main}
+            options={{ ...tabOptions, title: "Главная" }} />
+        <Tab.Screen
+            name="Card"
+            component={Card}
+            options={{ ...tabOptions, title: "Карта" }} />
+        <Tab.Screen
+            name="Map"
+            component={Map}
+            options={{ ...tabOptions, title: "Магазины" }} />
+        <Tab.Screen
+            name="Promo"
+            component={Promo}
+            options={{ ...tabOptions, title: "Акции" }} />
+        <Tab.Screen
+            name="Profile"
+            component={UserRoute}
+            options={{ ...tabOptions, headerShown: false }}
+        /></>;
+
+    const unAuthorizedRout = <><Tab.Screen
+        name="Main"
+        component={Main}
+        options={{ ...tabOptions, title: "Главная" }} />
+        <Tab.Screen
+            name="Map"
+            component={Map}
+            options={{ ...tabOptions, title: "Магазины" }} />
+        <Tab.Screen
+            name="Profile"
+            component={UserRoute}
+            // component={ModalRoute}
+            // options={{ headerShown: false }}
+            // options={{ headerTransparent: true, title: ''}} 
+            options={{ ...tabOptions, headerShown: false }}
+        /></>;
+
     return <NavigationContainer>
         <Tab.Navigator
             screenOptions={({ route }) => ({
@@ -57,50 +100,12 @@ export const Rout = () => {
                 },
                 tabBarActiveTintColor: 'green',
                 tabBarInactiveTintColor: 'tomato',
+                tabBarHideOnKeyboard: true,
+
 
             })}
 
-        > (user ?
-            (<Tab.Screen
-                name="Main"
-                component={Main}
-                options={{ ...tabOptions, title: "Главная" }} />
-            <Tab.Screen
-                name="Map"
-                component={Map}
-                options={{ ...tabOptions, title: "Магазины" }} />
-            <Tab.Screen
-                name="Profile"
-                component={Profile}
-                // component={ModalRoute}
-                // options={{ headerShown: false }}
-                // options={{ headerTransparent: true, title: ''}} 
-                options={{ ...tabOptions, title: "Профиль" }}
-            />)
-            : (<Tab.Screen
-                name="Main"
-                component={Main}
-                options={{ ...tabOptions, title: "Главная" }} />
-            <Tab.Screen
-                name="Card"
-                component={Card}
-                options={{ ...tabOptions, title: "Карта" }} />
-            <Tab.Screen
-                name="Map"
-                component={Map}
-                options={{ ...tabOptions, title: "Магазины" }} />
-            <Tab.Screen
-                name="Promo"
-                component={Promo}
-                options={{ ...tabOptions, title: "Акции" }} />
-            <Tab.Screen
-                name="Profile"
-                component={Profile}
-                // component={ModalRoute}
-                // options={{ headerShown: false }}
-                // options={{ headerTransparent: true, title: ''}} 
-                options={{ ...tabOptions, title: "Профиль" }}
-            />))
+        >{user == null ? unAuthorizedRout : autorizedRout}
         </Tab.Navigator>
     </NavigationContainer>
 }
