@@ -1,6 +1,6 @@
-import { AuthInviteView } from "../Components/AuthInviteView";
+// import { AuthInviteView } from "./AuthInviteView";
 
 
-export const Profile = () => {
-    return <AuthInviteView />
-}
+// export const Profile = () => {
+//     return <AuthInviteView />
+// }

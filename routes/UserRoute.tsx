@@ -3,7 +3,8 @@ import { AuthView, Profile } from "../views";
 import { UserView } from "../views/UserView";
 import { UserDataView } from "../views/UserDataView";
 import { RegisterView } from "../views/RegisterView";
-import { AuthInviteView } from "../Components/AuthInviteView";
+import { AuthInviteView } from "../views/AuthInviteView";
+import { RemindPass } from "../views/RemindPassView";
 
 const UserRouter = createNativeStackNavigator();
 
@@ -51,6 +52,13 @@ export const UserRoute = () => {
                 component={UserDataView}
                 options={{
                     title: ""
+                }}
+            />
+            <UserRouter.Screen
+                name="RemindPass"
+                component={RemindPass}
+                options={{
+                    title: "Сброс пароля"
                 }}
             />
         </UserRouter.Navigator>

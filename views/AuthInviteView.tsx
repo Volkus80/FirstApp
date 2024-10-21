@@ -1,11 +1,11 @@
 import { View, Text, StyleSheet, Linking } from "react-native"
 import { Image as ExpoImage } from "expo-image";
-import { ButtonComponent } from "./ButtonComponent";
-import { ServiceButton } from "./ServiceButton";
+import { ButtonComponent } from "../Components/ButtonComponent";
+import { ServiceButton } from "../Components/ServiceButton";
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
-import { IconedButton } from "./IconedButton";
+import { IconedButton } from "../Components/IconedButton";
 import SimpleLineIcons from '@expo/vector-icons/SimpleLineIcons';
-import { InfoButtonsModal } from "./InfoButtonsModal";
+import { InfoButtonsModal } from "../Components/InfoButtonsModal";
 import { useModal } from "../hooks/useModal";
 import { StackProps } from "../types/routTypes";
 
@@ -23,8 +23,8 @@ export const AuthInviteView = ({ navigation, route }: StackProps) => {
             <Text style={styles.text}>Войдите или зарегестрируйтесь для получения бонусов и персональных предложений</Text>
 
             <View style={styles.authButtonsBlock}>
-                <ButtonComponent title="Вход" onPress={() => navigation.navigate('AuthView')} />
-                <ButtonComponent title="Регистрация" onPress={() => navigation.navigate('RegisterView')} />
+                <ButtonComponent title="Вход" onPress={() => navigation.navigate('AuthView')} style={styles.buttonComp} />
+                <ButtonComponent title="Регистрация" onPress={() => navigation.navigate('RegisterView')} style={styles.buttonComp} />
             </View>
 
             <View style={styles.authButtonsBlock}>
@@ -70,14 +70,15 @@ const styles = StyleSheet.create({
         height: 250,
     },
     authButtonsBlock: {
-        display: 'flex',
-        alignItems: 'center',
         justifyContent: 'space-around',
         flexDirection: 'row',
         marginBottom: 30,
         width: '100%',
         gap: 10
 
+    },
+    buttonComp: {
+        width: '40%'
     },
     modalWinBody: {
         flex: 1,

@@ -1,7 +1,6 @@
-import { ViewStyle, StyleProp } from 'react-native';
+import { ViewStyle, StyleProp, TextStyle, TouchableOpacityProps } from 'react-native';
 
-export type ButtonProps = {
+export interface ButtonProps extends TouchableOpacityProps {
     title: string,
-    onPress?: () => void,
-    style?: StyleProp<ViewStyle>,
+    textStyle?: StyleProp<TextStyle>
 }

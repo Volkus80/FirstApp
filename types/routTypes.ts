@@ -9,7 +9,8 @@ type MainRouteType = {
     AuthView: undefined,
     RegisterView: undefined,
     UserView: undefined,
-    UserDataView: undefined
+    UserDataView: undefined,
+    RemindPass: undefined
     // ModalMenu: undefined,
     // InfoPage: {
     //     name: string,
