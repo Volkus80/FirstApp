@@ -9,8 +9,12 @@ import { FC } from "react"
 import { StackProps } from "../types/routTypes"
 
 type TypeAuthPageProps = StackProps & {
-    type?: "authorize" | "register" | "remind"
+    type?: TypeAuthPage
 }
+
+type TypeAuthPage = "authorize" | "register" | "remind";
+
+
 
 export const AuthPage: FC<TypeAuthPageProps> = ({ type = 'authorize', navigation }) => {
     const { mask, value, changePhohe } = usePhoneInput();

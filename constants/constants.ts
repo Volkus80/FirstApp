@@ -4,3 +4,5 @@ export const REGISTER = 'Регистрация';
 export const FORGOT_PASS_QUESTION = 'Забыли пароль?';
 export const NEXT = 'Далее';
 export const GET_PASS = 'Получить пароль';
+export const URL = 'https://testproc.cloud39.ru';
+export const BANNERS_URL = '/BonusWebApi/MobileContentController/GetBanners';
