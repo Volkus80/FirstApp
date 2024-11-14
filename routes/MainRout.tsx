@@ -2,7 +2,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { BottomTabNavigationOptions, createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { MainRouteType } from "../types/routTypes";
 import { NavigationContainer } from "@react-navigation/native";
-import { Main, Card, Profile, Promo, Map } from "../views";
+import { Main, Card, Promo, Map } from "../views";
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { ModalRoute } from "./ModalRoute";
 import { useAuthContext } from "../hooks/useAuthContext";
@@ -54,7 +54,7 @@ export const Rout = () => {
         <Tab.Screen
             name="Profile"
             component={UserRoute}
-            options={{ ...tabOptions, headerShown: false }}
+            options={{ ...tabOptions, headerShown: false, title: "Профиль" }}
         /></>;
 
     const unAuthorizedRout = <><Tab.Screen
@@ -71,7 +71,7 @@ export const Rout = () => {
             // component={ModalRoute}
             // options={{ headerShown: false }}
             // options={{ headerTransparent: true, title: ''}} 
-            options={{ ...tabOptions, headerShown: false }}
+            options={{ ...tabOptions, headerShown: false, title: "Профиль" }}
         /></>;
 
     return <NavigationContainer>

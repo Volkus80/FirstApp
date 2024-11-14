@@ -1,28 +1,55 @@
 
 import { TypeBannerTypeName } from "./TypeBannerTypeName"
 
-export type TypeBannerData = {
+export interface TypeBannerData {
     BannerId: number,
-    Name: string | null,
+    Name?: string,
     StatusId: number,
-    StatusName: string | null,
+    StatusName?: string,
     BannerPageTypes: TypeBannerPageType[],
     PictureWidth: number,
     PictureHeight: number,
-    DeepLink: {
+    DeepLink?: {
         Id: number,
-        Name: string | null,
-        Link: string | null
-    } | null,
+        Name?: string,
+        Link?: string
+    },
     DeepLinkId: number,
-    CustomURL: string | null,
+    CustomURL?: string,
     Order: number,
-    Value: string | null,
-    Title: string | null
+    Value?: string,
+    Title?: string
 }
 
-export type TypeBannerPageType = {
-    Id: number | string,
-    Name: TypeBannerTypeName,
-    DisplayName: string
+export interface TypeBannerPageType {
+    Id?: number,
+    Name?: TypeBannerTypeName,
+    DisplayName?: string
 }
+
+
+// export type TypeBannerData = {
+//     BannerId: number,
+//     Name: string | null,
+//     StatusId: number,
+//     StatusName: string | null,
+//     BannerPageTypes: TypeBannerPageType[],
+//     PictureWidth: number,
+//     PictureHeight: number,
+//     DeepLink: {
+//         Id: number,
+//         Name: string | null,
+//         Link: string | null
+//     } | null,
+//     DeepLinkId: number,
+//     CustomURL: string | null,
+//     Order: number,
+//     Value: string | null,
+//     Title: string | null
+// }
+
+// export type TypeBannerPageType = {
+//     Id: number | string,
+//     Name: TypeBannerTypeName,
+//     DisplayName: string
+// }

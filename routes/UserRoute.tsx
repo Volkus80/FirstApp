@@ -1,5 +1,5 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack"
-import { AuthView, Profile } from "../views";
+import { AuthView } from "../views";
 import { UserView } from "../views/UserView";
 import { UserDataView } from "../views/UserDataView";
 import { RegisterView } from "../views/RegisterView";

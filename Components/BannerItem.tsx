@@ -1,12 +1,24 @@
 import { FC } from "react";
 import { TypeBannerData } from "../types/TypeBannerData";
 // import { Image } from "expo-image";
-import { Image, View, Text, StyleSheet, Dimensions } from "react-native";
+import { Image, View, Text, StyleSheet, Dimensions, TouchableOpacity } from "react-native";
 import { URL } from "../constants/constants";
+import { StackProps } from "../types/routTypes";
+import { useAuthContext } from "../hooks/useAuthContext";
+import { UserRoute } from "../routes/UserRoute";
 
-export const BannerItem: FC<TypeBannerData> = (props) => {
+export const BannerItem: FC<TypeBannerData & StackProps> = (props) => {
+    const { user } = useAuthContext();
+    const pressHandler = () => {
+        if (user) return;
+        switch (props?.DeepLink?.Link) {
+            case 'rx-loyalty/login': return props.navigation.navigate("AuthView");
+            default: return;
+        }
+    }
+
     return (
-        <View style={styles(props).container}>
+        <TouchableOpacity style={styles(props).container} onPress={pressHandler}>
             <Image
                 src={URL + props.Value}
                 // source={URL + props.Value}
@@ -14,7 +26,8 @@ export const BannerItem: FC<TypeBannerData> = (props) => {
                 style={styles(props).image}
             />
             {props.Title && <Text style={styles(props).text}>{props.Title}</Text>}
-        </View>
+
+        </TouchableOpacity>
     )
 }
 

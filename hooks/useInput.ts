@@ -1,6 +1,7 @@
-import { useState } from "react"
+import { SetStateAction, useState } from "react"
 
 export const useInput = () => {
+
     const [value, setValue] = useState('');
 
     const setInputValue = (val: string) => setValue(val);

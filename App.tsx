@@ -2,7 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import { Rout } from './routes/MainRout';
 import { AuthProvider } from './hoc/AuthProvider';
-import YaMap from 'react-native-yamap';
+// import YaMap from 'react-native-yamap';
 import axios from 'axios';
 import { URL } from './constants/constants';
 
